@@ -1,0 +1,46 @@
+sentinel:
+  enabled: false
+
+metrics:
+  enabled: true
+  startupProbe:
+    enabled: true
+  livenessProbe:
+    enabled: true
+  readinessProbe:
+    enabled: true
+
+annotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "9121"
+
+master:
+  count: 1
+  persistence:
+    enabled: true
+    storageClass: "managed-premium"
+    size: "8Gi"
+  resources:
+    requests:
+      cpu: 1144m   # Increased by 30%
+      memory: 400Mi
+    limits:
+      cpu: 1248m   # Increased by 30%
+      memory: 800Mi
+
+replica:
+  replicaCount: 3
+  persistence:
+    enabled: true
+    storageClass: "default"
+    size: "8Gi"
+  resources:
+    requests:
+      cpu: 880m
+      memory: 400Mi
+    limits:
+      cpu: 960m
+      memory: 800Mi
+
+usePassword: true
+password: "xqjeYqhXqJFZevKNQAp4Ap7mmAtSobFTdD257gvLZgDKxrn54J"
