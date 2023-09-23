@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+data:
+  prometheus-config: |-
+    global:
+      scrape_interval: 30s
+      scrape_timeout: 10s
+      evaluation_interval: 30s
+    scrape_configs:
+    - job_name: redis
+      scrape_interval: 30s
+      scrape_timeout: 30s
+      static_configs:
+        - targets:
+          - redis-metrics.redis-with-metrics.svc.cluster.local:9121
+      metrics_path: /metrics
+metadata:
+  name: ama-metrics-prometheus-config
+  namespace: kube-system
