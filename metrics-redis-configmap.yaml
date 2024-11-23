@@ -15,5 +15,5 @@ data:
           - redis-metrics.redis-with-metrics.svc.cluster.local:9121
       metrics_path: /metrics
 metadata:
-  name: redis-metrics-prometheus-config
+  name: ama-metrics-prometheus-config
   namespace: kube-system
